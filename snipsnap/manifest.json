@@ -1,0 +1,19 @@
+{
+    "manifest_version": 3,
+    "name": "SnipSnap",
+    "version": "0.1",
+    "description": "Snap and share screenshots of the web!",
+    "icons": {
+        "16": "img/snipsnap-16.png",
+        "32": "img/snipsnap-32.png",
+        "48": "img/snipsnap-48.png",
+        "128": "img/snipsnap-128.png"
+    },
+    "permissions": ["activeTab"],
+    "action": {},
+    "background": {
+        "service_worker": "background.js",
+        "scripts": ["background.js"],
+        "type": "module"
+    }
+}
