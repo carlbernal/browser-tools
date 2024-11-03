@@ -5,7 +5,7 @@
     "snipsnap"
   ],
   "scripts": {
-    "test": "test"
+    "test": "echo testing"
   },
   "license": "ISC"
 }

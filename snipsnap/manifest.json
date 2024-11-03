@@ -11,12 +11,19 @@
     },
     "permissions": [
         "activeTab",
-        "storage"
+        "storage",
+        "identity"
     ],
     "action": {},
     "background": {
         "service_worker": "background.js",
-        "scripts": ["background.js"],
         "type": "module"
-    }
+    },
+    "oauth2": {
+        "client_id": "",
+        "scopes": [
+            "https://www.googleapis.com/auth/drive.file"
+        ]
+    },
+    "key": ""
 }
