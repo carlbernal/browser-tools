@@ -7,14 +7,26 @@ chrome.runtime.onStartup.addListener(() => {
     console.log("User active");
 })
 
-chrome.action.onClicked.addListener((tab) => {
+chrome.action.onClicked.addListener(async (tab) => {
     /*
      * TODO
-     * 1. Take a snapshot of the current page
+     * 1. Take a snapshot of the tab and store the URL and title of the tab
      * 2. Display edit page, allow user to add annotation similar to mac preview
-     * 3. After every changes, update image stored in storage
-     * 4. In edit page, show option to copy storage URL or image file
+     * 3. Once image edit is done, image is uploaded to cloud provider and is
+     * redirected to the cloud provider image view
      */
-    console.log("Extension clicked");
-})
+    const screenshot = {
+        title: tab.title,
+        url: tab.url,
+    }
+    screenshot.dataUrl = await chrome.tabs.captureVisibleTab()
 
+    chrome.storage.local.set(
+        screenshot,
+        () => {
+            chrome.tabs.create({url:
+                chrome.runtime.getURL("preview/index.html")
+            })
+        }
+    )
+})
