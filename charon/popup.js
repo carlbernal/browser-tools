@@ -3,47 +3,49 @@ document.addEventListener("DOMContentLoaded", async () => {
   const url = document.getElementById("url");
   const sync = document.getElementById("sync");
 
+  // Set value of textarea to shortcuts
   const storage = await chrome.storage.sync.get("shortcuts");
-  if (typeof storage !== "undefined") {
+  if (storage.shortcuts) {
     textarea.value = JSON.stringify(storage.shortcuts, null, 2);
   }
 
-  // Save shortcuts in textarea 1 sec after typing
-  let timeout;
+  // Save shortcuts in textarea .8 secs after user stops typing
+  let typingTimer;
+  const typingDelay = 800;
   textarea.addEventListener("input", () => {
-    clearTimeout(timeout);
-    timeout = setTimeout(() => {
-      try {
-        chrome.storage.sync.set({
-          shortcuts: JSON.parse(textarea.value),
-        });
-      } catch (err) {
-        // TODO log errors to a file
-        console.log(err);
-      }
-    }, 1000);
+    clearTimeout(typingTimer);
+    typingTimer = setTimeout(() => {
+      setShortcuts(textarea.value);
+    }, typingDelay);
+  });
+  textarea.addEventListener("keydown", () => {
+    clearTimeout(typingTimer);
   });
 
-  url.addEventListener("keydown", (event) => {
-    if (event.key === "Enter") {
-      syncShortcuts(url.value);
+  sync.addEventListener("click", async () => {
+    sync.disabled = true
+    try {
+      // Use URL() object to check if url input is valid url
+      const res = await fetch(new URL(url.value.trim()));
+      const shortcuts = await res.json();
+      setShortcuts(JSON.stringify(shortcuts, null, 2));
+    } catch (err) {
+      console.error(err);
+      window.alert(err);
+      sync.disabled = false
     }
-  });
-
-  sync.addEventListener("click", (event) => {
-    syncShortcuts(url.value);
+    sync.disabled = false
   });
 });
 
-async function syncFromUrl(url) {
+function setShortcuts(shortcuts) {
   try {
-    new URL(url);
-    const data = await fetch(url);
     chrome.storage.sync.set({
-      shortcuts: JSON.parse(data),
+      // TODO add shortcuts entity schema validation
+      shortcuts: JSON.parse(shortcuts),
     });
   } catch (err) {
-    // TODO log errors to a file
-    console.log(err);
+    console.error(err);
+    window.alert(err);
   }
 }
