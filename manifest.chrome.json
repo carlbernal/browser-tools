@@ -19,11 +19,6 @@
     "service_worker": "background.js",
     "type": "module"
   },
-  "browser_specific_settings": {
-    "gecko": {
-      "id": "{6fd597f6-33d7-46be-852e-6a4f16d8dd06}"
-    }
-  },
   "omnibox": {
     "keyword": "c"
   }
