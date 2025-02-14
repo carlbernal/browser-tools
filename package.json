@@ -1,11 +1,18 @@
 {
   "name": "browser-tools",
   "private": true,
+  "scripts": {
+    "copy-polyfill": "cp node_modules/webextension-polyfill/dist/browser-polyfill.min.js build/",
+    "chrome": "cp manifest.chrome.json build/manifest.json",
+    "firefox": "cp manifest.firefox.json build/manifest.json"
+  },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
-    "@types/chrome": "^0.0.290",
+    "@types/webextension-polyfill": "^0.12.1",
     "eslint": "^9.17.0",
-    "globals": "^15.14.0",
-    "lerna": "^8.1.9"
+    "globals": "^15.14.0"
+  },
+  "dependencies": {
+    "webextension-polyfill": "^0.12.0"
   }
 }

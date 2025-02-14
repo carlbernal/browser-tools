@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "Charon",
+  "version": "0.1.0",
+  "description": "Share shortcuts for your favorite websites!",
+  "icons": {
+    "16": "img/canoe-16.png",
+    "32": "img/canoe-32.png",
+    "48": "img/canoe-48.png",
+    "128": "img/canoe-128.png"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "action": {
+    "default_popup": "index.html"
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ],
+    "type": "module"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{6fd597f6-33d7-46be-852e-6a4f16d8dd06}"
+    }
+  },
+  "omnibox": {
+    "keyword": "c"
+  }
+}

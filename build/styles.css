@@ -1,0 +1,58 @@
+:root {
+  --bg-color: #1c1c1c;
+  --fg-color: #3d3c3c;
+
+  --text-color: #dcdcd4;
+  --text-color-shade-2: #b8b8a9;
+
+  --accent-color: #008fed;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--fg-color);
+  color: var(--text-color);
+
+  font-family: Arial, sans-serif;
+  font-optical-sizing: auto;
+  line-height: 1.5;
+
+  margin: 0;
+  padding: 0;
+}
+
+#textarea {
+  line-height: 1.5;
+
+  border: unset;
+  resize: none;
+
+  height: 30rem;
+  width: 25rem;
+
+  background-color: var(--bg-color);
+  color: var(--text-color);
+
+  margin: 0.1rem;
+}
+
+#textarea:focus {
+  outline: none;
+}
+
+#toast {
+  margin-left: 0.3rem;
+  margin-right: 0.3rem;
+
+  margin-top: 0.1rem;
+  margin-bottom: 0.1rem;
+}
+
+.hidden {
+  display: none;
+}
