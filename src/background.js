@@ -1,4 +1,4 @@
-import "./browser-polyfill.min.js";
+import "./browser-polyfill.js";
 
 browser.omnibox.onInputEntered.addListener(async (text) => {
   const storage = await browser.storage.sync.get("shortcuts");

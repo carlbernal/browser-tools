@@ -2,9 +2,10 @@
   "name": "browser-tools",
   "private": true,
   "scripts": {
-    "copy-polyfill": "cp node_modules/webextension-polyfill/dist/browser-polyfill.min.js build/",
-    "chrome": "cp manifest.chrome.json build/manifest.json",
-    "firefox": "cp manifest.firefox.json build/manifest.json"
+    "copy-polyfill": "cp node_modules/webextension-polyfill/dist/browser-polyfill.js src/",
+    "chrome": "cp manifest.chrome.json src/manifest.json",
+    "firefox": "cp manifest.firefox.json src/manifest.json",
+    "zip": "cd $(git rev-parse --show-toplevel)/src && zip -r -FS ../build.zip *"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",

@@ -1,4 +1,4 @@
-import "./browser-polyfill.min.js";
+import "./browser-polyfill.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   const textarea = document.getElementById("textarea");

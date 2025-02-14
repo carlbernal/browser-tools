@@ -4,19 +4,9 @@
 
 ## Installation:
 
-1. Chrome uses a different web extension manifest format than Firefox and
-   Safari. Run the `chrome` npm script to copy the chrome manifest file to the
-   build directory or run `firefox` for Firefox and Safari.
+- For Firefox, install the extension using [Charon's Firefox XPI link](https://addons.mozilla.org/firefox/downloads/file/4437265/c509ba01a68a42e68392-0.2.0.xpi).
 
-2. Load the extension in the `build` directory to your browser.
-
-- Go to
-  [about:debugging#/runtime/this-firefox](about:debugging#/runtime/this-firefox)
-  and click `Load Temporary Add-on` for Firefox.
-
-- Go to [chrome://extensions/](chrome://extensions/) and click `Load unpacked`
-  for chrome. Toggle developer mode in the upper right corner if you haven't
-  done so.
+- For Chrome, go to [Charon's Chrome Web Store page](https://chromewebstore.google.com/detail/charon/immickcjonbehjmmeddiljnnoigdcfkl).
 
 ## How to use:
 
@@ -34,10 +24,7 @@
   }
   ```
 
-<!--vale off-->
-
 2.  **Activate Omnibox**
-<!--vale on-->
 
 - After setting up your shortcuts, you can use the search bar to trigger them.
 
