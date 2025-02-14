@@ -1,11 +1,14 @@
 {
-  "name": "browser-tools",
+  "name": "Charon",
   "private": true,
   "scripts": {
-    "copy-polyfill": "cp node_modules/webextension-polyfill/dist/browser-polyfill.js src/",
-    "chrome": "cp manifest.chrome.json src/manifest.json",
-    "firefox": "cp manifest.firefox.json src/manifest.json",
-    "zip": "cd $(git rev-parse --show-toplevel)/src && zip -r -FS ../build.zip *"
+    "root": "cd $(git rev-parse --show-toplevel)",
+    "cp:polyfill": "npm run root && cp node_modules/webextension-polyfill/dist/browser-polyfill.js src/",
+    "cp:chrome": "npm run root && cp manifest.chrome.json src/manifest.json",
+    "cp:firefox": "npm run root && cp manifest.firefox.json src/manifest.json",
+    "zip": "cd $(git rev-parse --show-toplevel)/src && zip -r -FS ../build.zip *",
+    "build:chrome": "npm run cp:chrome && npm run zip",
+    "build:firefox": "npm run cp:firefox && npm run zip"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",

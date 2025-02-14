@@ -30,6 +30,7 @@ function setShortcuts(shortcutsJson) {
     shortcuts = JSON.parse(shortcutsJson);
   } catch {
     showToast("Shortcuts must be a valid JSON.");
+    return;
   }
 
   // Make sure url starts with https
